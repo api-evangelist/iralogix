@@ -1,23 +1,102 @@
 aid: iralogix
 name: IRALOGIX
-description: 'IRALOGIX is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'IRALOGIX is a Pittsburgh, Pennsylvania fintech that operates a cloud-native,
+  white-label IRA (Individual Retirement Account) recordkeeping and administration
+  platform for financial institutions — banks, wealth managers, brokerages, recordkeepers
+  and advisors — who use it to offer digital IRA programs under their own brand. The
+  platform covers onboarding, contributions, trading, distributions, rollovers, compliance
+  monitoring and administration end to end, and the company markets "API-driven connectivity
+  and real-time data flows" that integrate with existing custodial and recordkeeping
+  infrastructure rather than replacing it. The developer surface is partner-gated:
+  documentation at docs.iralogix.com sits behind Okta visitor authentication and the
+  partner console at partner.iralogix.com behind an Auth0 tenant, so no public OpenAPI,
+  AsyncAPI or SDK is published. The company states SSAE SOC 2 Type 1 and SSAE SOC 1
+  Type 2 attestation.'
+image: https://iralogix.com/wp-content/uploads/2025/11/Iralogix-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/iralogix/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment-pass
 specificationVersion: '0.20'
 created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
-apis: []
+- Financial Services
+- Retirement
+- IRA
+- Recordkeeping
+- Wealth Management
+- Fintech
+- Compliance
+- White Label
+- Retirement Technology
+apis:
+- name: IRALOGIX Partner Authorization Server
+  description: 'The publicly reachable OpenID Connect / OAuth 2.0 authorization server
+    that fronts the IRALOGIX partner platform. It publishes a full OIDC discovery document
+    at /.well-known/openid-configuration and an RFC 8414 authorization-server metadata
+    document, exposing authorization, token, device-code, userinfo, MFA challenge,
+    JWKS, dynamic client registration, revocation and RP-initiated logout endpoints.
+    It is the only IRALOGIX API surface that is machine-readable without partner credentials;
+    the partner data APIs themselves are gated.'
+  humanURL: https://partner.iralogix.com/
+  baseURL: https://auth.partner.iralogix.com/
+  tags:
+  - Authentication
+  - OpenID Connect
+  - OAuth 2.0
+  - Identity
+  properties:
+  - type: Authentication
+    url: authentication/iralogix-authentication.yml
+  - type: OAuthScopes
+    url: scopes/iralogix-scopes.yml
+  - type: WellKnown
+    url: well-known/iralogix-well-known.yml
+  - type: OpenIDConnect
+    url: well-known/iralogix-openid-configuration.json
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 8
+  pass: local-v1
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/iralogix-domain-security.yml
 - type: Website
-  url: https://forgeglobal.com/iralogix_stock/
+  url: https://iralogix.com/
+- type: DeveloperPortal
+  url: https://partner.iralogix.com/
+- type: Documentation
+  url: https://docs.iralogix.com/
+- type: Blog
+  url: https://iralogix.com/news/
+- type: BlogRSS
+  url: https://iralogix.com/feed/
+- type: Login
+  url: https://partner.iralogix.com/
+- type: PrivacyPolicy
+  url: https://iralogix.com/privacy-policy/
+- type: Support
+  url: https://iralogix.com/contact/
+- type: Compliance
+  url: https://iralogix.com/platform/
+- type: Authentication
+  url: authentication/iralogix-authentication.yml
+- type: OAuthScopes
+  url: scopes/iralogix-scopes.yml
+- type: WellKnown
+  url: well-known/iralogix-well-known.yml
+- type: Conformance
+  url: conformance/iralogix-conformance.yml
+- type: LLMsTxt
+  url: llms/iralogix-llms.txt
+- type: LinkedIn
+  url: https://www.linkedin.com/company/iralogix

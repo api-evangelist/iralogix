@@ -1,0 +1,26 @@
+generated: '2026-08-04'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: iralogix.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 11 23:02:25 2026 GMT
+  hsts: false
+- host: partner.iralogix.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Dec 29 23:59:59 2026 GMT
+  hsts: false
+- host: auth.partner.iralogix.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  8 13:20:14 2026 GMT
+  hsts: false
+domains:
+- domain: iralogix.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine

@@ -1,0 +1,77 @@
+generated: '2026-08-04'
+method: probed
+source: https://auth.partner.iralogix.com/.well-known/openid-configuration
+docs: null
+notes: 'These are the scopes the IRALOGIX partner authorization server advertises in
+  its OIDC discovery document. They are the standard OpenID Connect scopes and Auth0
+  claim-scopes only — no IRALOGIX business scopes (accounts, contributions, distributions,
+  rollovers, trading) are published anonymously. Partner-facing resource scopes, if
+  any exist, are behind the gated documentation at docs.iralogix.com and would require
+  authenticated discovery to enumerate. Nothing here is inferred; the list is verbatim
+  from scopes_supported.'
+schemes:
+- name: IRALOGIX Partner OIDC
+  source: well-known/iralogix-openid-configuration.json
+  issuer: https://auth.partner.iralogix.com/
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://auth.partner.iralogix.com/authorize
+    tokenUrl: https://auth.partner.iralogix.com/oauth/token
+  - flow: clientCredentials
+    tokenUrl: https://auth.partner.iralogix.com/oauth/token
+  - flow: deviceCode
+    deviceAuthorizationUrl: https://auth.partner.iralogix.com/oauth/device/code
+    tokenUrl: https://auth.partner.iralogix.com/oauth/token
+scopes:
+- scope: openid
+  description: Request an ID token — the base OpenID Connect scope.
+  kind: oidc-standard
+- scope: profile
+  description: Basic profile claims for the authenticated partner user.
+  kind: oidc-standard
+- scope: offline_access
+  description: Issue a refresh token so the client can renew access without user interaction.
+  kind: oidc-standard
+- scope: email
+  description: The user's email address.
+  kind: oidc-standard
+- scope: email_verified
+  description: Whether the user's email address has been verified.
+  kind: claim-scope
+- scope: name
+  description: The user's full name.
+  kind: claim-scope
+- scope: given_name
+  description: The user's given name.
+  kind: claim-scope
+- scope: family_name
+  description: The user's family name.
+  kind: claim-scope
+- scope: nickname
+  description: The user's nickname.
+  kind: claim-scope
+- scope: picture
+  description: URL of the user's profile picture.
+  kind: claim-scope
+- scope: phone
+  description: The user's phone number.
+  kind: oidc-standard
+- scope: address
+  description: The user's postal address.
+  kind: oidc-standard
+- scope: created_at
+  description: When the user record was created in the tenant.
+  kind: claim-scope
+- scope: identities
+  description: The linked identity providers for the user.
+  kind: claim-scope
+gaps:
+- id: no-resource-scopes
+  note: No business/resource scopes are published. For a platform that markets API-driven
+    partner connectivity, publishing a scope reference (read/write per IRA domain object)
+    would be the single largest authorization-transparency improvement.
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://auth.partner.iralogix.com/.well-known/openid-configuration
+  http_status: 200
+  field: scopes_supported

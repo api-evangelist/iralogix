@@ -1,0 +1,80 @@
+generated: '2026-08-04'
+method: searched
+source: live probes of every IRALOGIX host discovered in apis.yml
+notes: '*.iralogix.com carries a catch-all wildcard A record (107.180.9.42), so unmatched
+  subdomains (status., trust., security., blog., app.) resolve but are not real hosts.
+  partner.iralogix.com is a single-page app that answers HTTP 200 with an HTML shell
+  for every /.well-known/* path — those 200s are false positives and are recorded as
+  html-shell, not as documents. docs.iralogix.com answers every path with the Okta
+  visitor-auth sign-in shell. api.iralogix.com is a dangling CNAME to an AWS API Gateway
+  ELB (prd-apima-apigatew-10nicw232kc5y-1571579995.us-east-1.elb.amazonaws.com) that
+  no longer resolves.'
+hosts:
+- host: https://auth.partner.iralogix.com
+  vendor: Auth0 (x-auth0-l / x-auth0-requestid response headers)
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: iralogix-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    file: iralogix-oauth-authorization-server.json
+    note: byte-identical to the openid-configuration document
+  - path: /.well-known/jwks.json
+    status: 200
+    content_type: application/json
+    file: null
+    note: 2 RSA RS256 signing keys; key material not mirrored into the repo
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://iralogix.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://partner.iralogix.com
+  documents:
+  - path: /.well-known/*
+    status: 200
+    content_type: text/html
+    result: html-shell
+    note: SPA catch-all returns the same HTML document for every well-known path;
+      rejected as a false positive, no document captured
+- host: https://docs.iralogix.com
+  documents:
+  - path: /.well-known/*
+    status: 200
+    content_type: text/html
+    result: html-shell
+    note: GitBook site behind Okta visitor auth; every path returns the "IRALOGIX -
+      Sign In" Okta shell, including /llms.txt, /openapi.json and /sitemap.xml
+x-evidence:
+  fetched: '2026-08-04'
+  probed_hosts:
+  - iralogix.com
+  - partner.iralogix.com
+  - auth.partner.iralogix.com
+  - docs.iralogix.com
+  - api.iralogix.com
+  - iralogix.okta.com
