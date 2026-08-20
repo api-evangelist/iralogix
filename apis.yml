@@ -23,6 +23,17 @@ created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
+- Financial-Services
+- Retirement
+- IRA
+- Recordkeeping
+- Wealth Management
+- Fintech
+- Compliance
+- White Label
+- Retirement Technology
+tags_raw:
+- Company
 - Financial Services
 - Retirement
 - IRA
@@ -44,6 +55,10 @@ apis:
   humanURL: https://partner.iralogix.com/
   baseURL: https://auth.partner.iralogix.com/
   tags:
+  - Authentication
+  - OpenID Connect
+  - Identity
+  tags_raw:
   - Authentication
   - OpenID Connect
   - OAuth 2.0
