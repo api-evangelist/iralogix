@@ -12,6 +12,17 @@ description: 'IRALOGIX is a Pittsburgh, Pennsylvania fintech that operates a clo
   partner console at partner.iralogix.com behind an Auth0 tenant, so no public OpenAPI,
   AsyncAPI or SDK is published. The company states SSAE SOC 2 Type 1 and SSAE SOC 1
   Type 2 attestation.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://iralogix.com/wp-content/uploads/2025/11/Iralogix-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/iralogix/refs/heads/main/apis.yml
 x-type: company
