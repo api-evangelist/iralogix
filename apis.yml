@@ -46,9 +46,12 @@ x-tier-reason: enrichment-pass
 specificationVersion: '0.23'
 created: '2026-08-04'
 modified: '2026-08-04'
+x-docs-platform: gitbook
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 tags:
 - Company
-- Financial-Services
+- Financial Services
 - Retirement
 - IRA
 - Recordkeeping
@@ -68,6 +71,7 @@ tags_raw:
 - Compliance
 - White Label
 - Retirement Technology
+- Financial-Services
 apis:
 - name: IRALOGIX Partner Authorization Server
   description: 'The publicly reachable OpenID Connect / OAuth 2.0 authorization server
